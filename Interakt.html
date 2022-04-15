@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Интерактив</title>
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background: lightcoral;
+				transition: all .25s;
+      }
+      button {
+        border: 1px solid black;
+        border-radius: 20px;
+        background: transparent;
+        padding: 15px 20px;
+        cursor: pointer;
+        outline: none;
+      }
+      h1,
+      h3 {
+        animation: down 1s;
+      }
+      @keyframes down {
+        from {
+          transform: translateY(-70px);
+        }
+        to {
+          transform: translateY(0);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h3>Привет, еще одна учебная страничка))</h3>
+    <h1>Сейчас 18:18:18</h1>
+    <button>Сменить цвет фона</button>
+    <script>
+      const name = prompt('Как Вас зовут?');
+			
+      document.querySelector("h3").textContent = "Привет, " + name;
+
+      document.querySelector("h1").textContent = "Сейчас " + new Date().toLocaleTimeString();
+
+      setInterval(function () {
+        document.querySelector("h1").textContent = "Сейчас " + new Date().toLocaleTimeString();
+      }, 1000);
+
+      const colors = ["indigo", "green", "darkred", "lime", "olive", "cadetblue", "deeppink"];
+      let index = 0;
+
+      document.querySelector("button").onclick = function () {
+        document.body.style.background = colors[index];
+        index++;
+        if (index >= colors.length) index = 0;
+      };
+    </script>
+  </body>
+</html>
